@@ -38,6 +38,7 @@ var DNSTimeout = 10 * time.Second
 
 // getNameservers attempts to get systems nameservers before falling back to the defaults
 func getNameservers(path string, defaults []string) []string {
+	var nameserver_env string
 	nameserver_env = os.Getenv("NAMESERVERS")
 	if len(nameserver_env) > 0 {
 		return strings.Split(nameserver_env, ",")
