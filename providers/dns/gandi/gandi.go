@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/xenolf/lego/acme"
+	"github.com/shankj3/lego/acme"
 )
 
 // Gandi API reference:       http://doc.rpc.gandi.net/index.html

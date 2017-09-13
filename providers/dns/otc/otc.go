@@ -12,7 +12,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/xenolf/lego/acme"
+	"github.com/shankj3/lego/acme"
 )
 
 // DNSProvider is an implementation of the acme.ChallengeProvider interface that uses
