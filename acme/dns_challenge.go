@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"os"
 	"log"
 	"net"
 	"strings"
@@ -30,13 +31,17 @@ var defaultNameservers = []string{
 	"google-public-dns-b.google.com:53",
 }
 
-var RecursiveNameservers = getNameservers(defaultResolvConf, defaultNameservers)
+var RecursiveNameservers = getNameservers(defaultResolvConf)
 
 // DNSTimeout is used to override the default DNS timeout of 10 seconds.
 var DNSTimeout = 10 * time.Second
 
 // getNameservers attempts to get systems nameservers before falling back to the defaults
 func getNameservers(path string, defaults []string) []string {
+	nameserver_env = os.Getenv("NAMESERVERS")
+	if len(nameserver_env) > 0 {
+		return strings.Split(nameserver_env, ",")
+	}
 	config, err := dns.ClientConfigFromFile(path)
 	if err != nil || len(config.Servers) == 0 {
 		return defaults
