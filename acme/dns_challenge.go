@@ -31,7 +31,7 @@ var defaultNameservers = []string{
 	"google-public-dns-b.google.com:53",
 }
 
-var RecursiveNameservers = getNameservers(defaultResolvConf)
+var RecursiveNameservers = getNameservers(defaultResolvConf, defaultNameservers)
 
 // DNSTimeout is used to override the default DNS timeout of 10 seconds.
 var DNSTimeout = 10 * time.Second
